@@ -25,7 +25,11 @@ Example Normal game with a secret number of 57:
 4. Enter `57`; the game announces the win and awards 80 points for solving it on the third attempt.
 5. Click **New Game** to start a fresh game with a new secret and reset attempts, score, and guess history.
 
-## What I fixed
+## Document Your Experience
+
+Baseline testing exposed three concrete bugs: a low guess could receive a “Go LOWER!” hint, an incorrect guess could add points, and New Game did not leave a lost state. The baseline `pytest` run also failed because the logic module contained placeholder functions.
+
+The fixes were:
 
 - Moved the game rules into `logic_utils.py` so they can be tested without running the UI.
 - Corrected high and low outcomes and their direction hints.
