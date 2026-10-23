@@ -28,9 +28,9 @@
 
 | Edge Case | Prompt Used | AI-Suggested Test | Did It Pass? | Your Reasoning |
 |-----------|-------------|-------------------|--------------|----------------|
-| | | | | |
-| | | | | |
-| | | | | |
+| Blank and whitespace-only input | Prompt summary: add pytest coverage for empty input and whitespace so it is rejected with a useful message. | Assert `parse_guess("")`, `parse_guess("   ")`, and `parse_guess(None)` return `(False, None, "Enter a guess.")`. | Yes | Users may submit an empty field; it should not turn into a guess or crash. |
+| Decimal input | Prompt summary: check that decimal guesses are handled deliberately instead of silently changing their value. | Assert `parse_guess("40.9")` returns `(False, None, "Enter a whole number.")`. | Yes | The starter used `int(float(raw))`, which truncates a decimal such as 40.9 to 40 and changes the user's input. |
+| Non-numeric text | Prompt summary: add a pytest case for text that cannot represent a whole-number guess. | Assert `parse_guess("four")` returns `(False, None, "Enter a whole number.")`. | Yes | This checks invalid text is handled as a normal validation result rather than an exception. |
 
 ---
 
